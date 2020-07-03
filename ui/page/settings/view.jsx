@@ -560,7 +560,7 @@ class SettingsPage extends React.PureComponent<Props, State> {
             />
             {/* @endif */}
 
-            <Card
+            {/* <Card
               title={__('Appearance')}
               actions={
                 <React.Fragment>
@@ -575,7 +575,7 @@ class SettingsPage extends React.PureComponent<Props, State> {
                     >
                       {themes.map(theme => (
                         <option key={theme} value={theme}>
-                          {theme === 'light' ? __('Light') : __('Dark')}
+                          {theme.toUpperCase()}
                         </option>
                       ))}
                     </FormField>
@@ -621,7 +621,7 @@ class SettingsPage extends React.PureComponent<Props, State> {
                   </fieldset-section>
                 </React.Fragment>
               }
-            />
+            /> */}
 
             {(isAuthenticated || !IS_WEB) && (
               <Card
