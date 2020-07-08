@@ -1,4 +1,5 @@
 // @flow
+import React from 'react';
 import * as PAGES from 'constants/pages';
 import * as CS from 'constants/claim_search';
 import { parseURI } from 'lbry-redux';
@@ -6,7 +7,7 @@ import moment from 'moment';
 import { toCapitalCase } from 'util/string';
 
 type RowDataItem = {
-  title: string,
+  title: any,
   link?: string,
   help?: any,
   options?: {},
@@ -107,7 +108,19 @@ export default function getHomePageRowData(
   ];
 
   const YOUTUBE_CREATOR_ROW = {
-    title: __('CableTube Escape Artists'),
+    title: (
+      <span className="no-evil">
+        <span className="no-evil--blue">D</span>
+        <span className="no-evil--red">o</span>
+        <span className="no-evil--yellow">n</span>
+        <span className="no-evil--blue">'</span>
+        <span className="no-evil--green">t</span> <span className="no-evil--red">b</span>
+        <span className="no-evil--blue">e</span> <span className="no-evil--red">e</span>
+        <span className="no-evil--yellow">v</span>
+        <span className="no-evil--blue">i</span>
+        <span className="no-evil--green">l</span>
+      </span>
+    ),
     link: `/$/${PAGES.DISCOVER}?${CS.CLAIM_TYPE}=${CS.CLAIM_STREAM}&${CS.CHANNEL_IDS_KEY}=${YOUTUBER_CHANNEL_IDS.join(
       ','
     )}`,
@@ -253,16 +266,21 @@ export default function getHomePageRowData(
     },
   };
 
+  if (!authenticated) {
+    rowData.push(YOUTUBE_CREATOR_ROW);
+  }
+
   if (showPersonalizedChannels) rowData.push(RECENT_FROM_FOLLOWING);
+
+  if (authenticated) {
+    rowData.push(YOUTUBE_CREATOR_ROW);
+  }
+
   if (showPersonalizedTags && !showIndividualTags) rowData.push(TRENDING_FOR_TAGS);
   if (showPersonalizedTags && showIndividualTags) {
     individualTagDataItems.forEach((item: RowDataItem) => {
       rowData.push(item);
     });
-  }
-
-  if (!authenticated) {
-    rowData.push(YOUTUBE_CREATOR_ROW);
   }
 
   rowData.push(TRENDING_CLASSICS);

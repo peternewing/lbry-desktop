@@ -1,38 +1,31 @@
 :root {
   --color-primary: #4785d2;
-  --color-primary-alt: #ffe1bd;
-  --color-primary-alt-2: #ffb43b;
-  --color-secondary: #4785d2;
-  --color-secondary-alt: #e2ecf8;
+  --color-primary-alt: #e2ecf8;
+  --color-primary-alt-2: #edf2f7;
+  --color-secondary: #f4b400;
+  --color-secondary-alt: #fff2cc;
+  --color-secondary-alt-2: #fefcf6;
 
   // Button
-  --color-link-icon: var(--color-gray-4);
-  --color-link-active: var(--color-primary);
-  --color-navigation-link: var(--color-gray-5);
-  --color-header-button: #f7f7f7;
-  --color-button-border: var(--color-gray-3);
-
-  // Button
+  --color-menu-background--active: var(--color-primary-alt);
   --color-link: var(--color-primary);
-  --color-button-primary-bg: var(--color-primary-alt-2);
-  --color-button-primary-bg-hover: #ffe28f;
-  --color-button-primary-text: #38567a;
-  --color-button-primary-hover-text: var(--color-primary);
+  --color-button-primary-bg: var(--color-primary);
+  --color-button-primary-bg-hover: #689bda;
+  --color-button-primary-text: var(--color-primary-alt);
+  --color-button-primary-hover-text: var(--color-white);
+  --color-button-secondary-bg: var(--color-primary-alt);
+  --color-button-secondary-text: var(--color-primary);
   --color-button-secondary-bg-hover: #edf2f7;
   --color-button-toggle-text: #38567a;
-  --color-button-toggle-bg: var(--color-primary-alt);
+  --color-button-toggle-bg: var(--color-secondary-alt);
+  --color-button-toggle-bg-hover: var(--color-secondary-alt);
+
+  // Input
+  --color-input-toggle-bg: var(--color-secondary-alt-2);
+  --color-input-bg-selected: var(--color-secondary-alt);
 
   // Color
   --color-background: #f9f9f9;
-  --color-background--splash: #212529;
   --color-border: #ededed;
-  --color-background-overlay: #21252980;
   --color-nag: #fa8700;
-  --color-error: #fcafca;
-  --color-comment-menu: #e0e0e0;
-  --color-comment-menu-hovering: #6a6a6a;
-  --color-notice: #fef3ca;
-  --color-purchased: var(--color-cost);
-  --color-purchased-alt: #ffebc2;
-  --color-purchased-text: var(--color-gray-5);
 }
