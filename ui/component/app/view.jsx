@@ -208,10 +208,10 @@ function App(props: Props) {
   }, [language, languages]);
 
   useEffect(() => {
-    if (previousUserId === undefined && userId) {
+    if (previousUserId === undefined && userId && hasVerifiedEmail) {
       analytics.setUser(userId);
     }
-  }, [previousUserId, userId]);
+  }, [previousUserId, userId, hasVerifiedEmail]);
 
   useEffect(() => {
     // Check that previousHasVerifiedEmail was not undefined instead of just not truthy
