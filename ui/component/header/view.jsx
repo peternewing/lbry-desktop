@@ -78,6 +78,7 @@ const Header = (props: Props) => {
   const isVerifyPage = history.location.pathname.includes(PAGES.AUTH_VERIFY);
   const isSignUpPage = history.location.pathname.includes(PAGES.AUTH);
   const isSignInPage = history.location.pathname.includes(PAGES.AUTH_SIGNIN);
+  const isPwdResetPage = history.location.pathname.includes(PAGES.AUTH_PASSWORD_RESET);
 
   // Sign out if they click the "x" when they are on the password prompt
   const authHeaderAction = syncError ? { onClick: signOut } : { navigate: '/' };
@@ -92,6 +93,10 @@ const Header = (props: Props) => {
       }
 
       if (isSignUpPage) {
+        history.goBack();
+      }
+
+      if (isPwdResetPage) {
         history.goBack();
       }
 
@@ -164,7 +169,12 @@ const Header = (props: Props) => {
             <div className="header__navigation">
               <Button
                 className="header__navigation-item header__navigation-item--lbry header__navigation-item--button-mobile"
-                label={LOGO_TITLE}
+                // @if TARGET='app'
+                label={'LBRY'}
+                // @endif
+                // @if TARGET='web'
+                label={LOGO_TITLE} // eslint-disable-line
+                // @endif
                 icon={ICONS.LBRY}
                 onClick={() => {
                   if (history.location.pathname === '/') window.location.reload();

@@ -64,6 +64,7 @@ type Props = {
   otherLicenseDescription: ?string,
   licenseUrl: ?string,
   uri: ?string,
+  useLBRYUploader: ?boolean,
   publishing: boolean,
   balance: number,
   isStillEditing: boolean,
@@ -77,6 +78,7 @@ type Props = {
   updatePublishForm: any => void,
   checkAvailability: string => void,
   onChannelChange: string => void,
+  ytSignupPending: boolean,
 };
 
 function PublishForm(props: Props) {
@@ -108,6 +110,7 @@ function PublishForm(props: Props) {
     disabled = false,
     checkAvailability,
     onChannelChange,
+    ytSignupPending,
   } = props;
 
   const TAGS_LIMIT = 5;
@@ -331,27 +334,35 @@ function PublishForm(props: Props) {
         </div>
       )}
       <section>
-        {!formDisabled && !formValid && <PublishFormErrors />}
-
         <div className="card__actions">
           <Button
             button="primary"
             onClick={handlePublish}
             label={submitLabel}
-            disabled={formDisabled || !formValid || uploadThumbnailStatus === THUMBNAIL_STATUSES.IN_PROGRESS}
+            disabled={
+              formDisabled || !formValid || uploadThumbnailStatus === THUMBNAIL_STATUSES.IN_PROGRESS || ytSignupPending
+            }
           />
           <Button button="link" onClick={clearPublish} label={__('Cancel')} />
         </div>
         <p className="help">
-          <I18nMessage
-            tokens={{
-              lbry_terms_of_service: (
-                <Button button="link" href="https://www.lbry.com/termsofservice" label={__('LBRY Terms of Service')} />
-              ),
-            }}
-          >
-            By continuing, you accept the %lbry_terms_of_service%.
-          </I18nMessage>
+          {!formDisabled && !formValid ? (
+            <PublishFormErrors />
+          ) : (
+            <I18nMessage
+              tokens={{
+                lbry_terms_of_service: (
+                  <Button
+                    button="link"
+                    href="https://www.lbry.com/termsofservice"
+                    label={__('LBRY Terms of Service')}
+                  />
+                ),
+              }}
+            >
+              By continuing, you accept the %lbry_terms_of_service%.
+            </I18nMessage>
+          )}
         </p>
       </section>
     </div>
