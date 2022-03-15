@@ -140,7 +140,7 @@
     "lbryinc": "lbryio/lbryinc#cff5dd60934c4c6080e135f47ebbece1548c658c",
     "lint-staged": "^7.0.2",
     "localforage": "^1.7.1",
-    "lodash-es": "^4.17.14",
+    "lodash-es": "^4.17.21",
     "mammoth": "^1.4.6",
     "moment": "^2.22.0",
     "node-abi": "^2.5.1",
